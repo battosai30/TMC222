@@ -151,6 +151,7 @@ void TMC222::SetMotorParam(byte Irun, byte Ihold, byte Vmax, byte Vmin, unsigned
 void TMC222::SetOTPParam(byte OTPA, byte PBits) {
 
   Wire.beginTransmission(_Adress);
+  Wire.write(C_SetOTPParam);
   Wire.write(0xFF);
   Wire.write(0xFF);
   Wire.write( 0xF8 | (OTPA & 0x7));
@@ -158,6 +159,27 @@ void TMC222::SetOTPParam(byte OTPA, byte PBits) {
   Wire.endTransmission();
 
 }
+
+byte TMC222::GetOTPParam(byte index){
+ 
+ byte Buffer[8];
+ 
+  Command(C_GetOTPParam);
+  
+ Wire.requestFrom(_Adress, 8);  
+ 
+ Wire.read();
+ 
+ int i=0;
+ 
+while(Wire.available() && i<8) Buffer[i++]=Wire.read();
+ 
+while(Wire.available()) Wire.read(); // Flush   
+
+return Buffer[index];
+ 
+ 
+ }
 
 void TMC222::GetFullStatus1() {
 

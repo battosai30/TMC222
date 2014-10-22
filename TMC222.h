@@ -1,11 +1,11 @@
 /* TMC222 library version 1.0
 
-Writed by B@tto 
+Written by B@tto 
 Contact : batto@hotmail.fr
 
 
   MCP3424.h - ADC 18 bits i2c library for Wiring & Arduino
-  Copyright (c) 2012 Yann LEFEBVRE.  All right reserved.
+  Copyright (c) 2014 Yann LEFEBVRE.  All right reserved.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -100,6 +100,7 @@ public:
  int GetActualPosition();
  long GetTargetPosition();
  long GetSecurePosition();
+ byte GetOTPParam(byte index);
  
  byte SoftMove(long Steps, byte ResetPosNeeded);
  void SoftStop();
