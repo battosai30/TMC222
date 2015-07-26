@@ -138,7 +138,7 @@ public:
   unsigned char Motion; 
   unsigned char ESW;
   unsigned char OVC1;
-  unsigned char OVC2,;
+  unsigned char OVC2;
   unsigned char CPFail;
 } 
  FullStatus_1 ;
